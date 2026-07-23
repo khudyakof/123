@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Гид по форелевым платникам Подмосковья — Ремингтон</title>
+<style>
+  :root{
+    --green:#16382b;
+    --green2:#1f4a39;
+    --orange:#e8672c;
+    --cream:#f7f4ec;
+    --sand:#ece5d6;
+    --ink:#22271f;
+    --muted:#6b7265;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{font-family:"Liberation Sans","DejaVu Sans",Arial,sans-serif;color:var(--ink);}
+  @page{size:A4;margin:0;}
+  .page{
+    width:210mm;height:296mm;
+    padding:16mm 15mm 14mm;
+    page-break-after:always;
+    position:relative;
+    background:var(--cream);
+    overflow:hidden;
+  }
+  .page:last-child{page-break-after:auto;}
+
+  /* ---------- common ---------- */
+  h2.sec{
+    font-size:22pt;color:var(--green);letter-spacing:-.3pt;
+    margin-bottom:3mm;line-height:1.1;
+  }
+  .kicker{
+    font-size:8pt;font-weight:bold;letter-spacing:2.2pt;text-transform:uppercase;
+    color:var(--orange);margin-bottom:2mm;
+  }
+  p.lead{font-size:10.5pt;line-height:1.55;color:#3a4136;margin-bottom:4mm;}
+  .footer{
+    position:absolute;bottom:8mm;left:15mm;right:15mm;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:7.5pt;color:var(--muted);
+    border-top:.4mm solid #d8d0bf;padding-top:2.5mm;
+  }
+  .footer b{color:var(--green);letter-spacing:1.5pt;}
+  .pagenum{background:var(--green);color:#fff;border-radius:50%;
+    width:6mm;height:6mm;display:flex;align-items:center;justify-content:center;font-size:7.5pt;}
+
+  /* ---------- cover ---------- */
+  .cover{background:var(--green);color:#fff;display:flex;flex-direction:column;padding:0;}
+  .cover-top{padding:18mm 18mm 0;flex:1;display:flex;flex-direction:column;}
+  .brandline{display:flex;align-items:center;gap:4mm;margin-bottom:24mm;}
+  .brandmark{background:var(--orange);color:#fff;font-weight:bold;letter-spacing:2.5pt;
+    padding:2.2mm 5mm;font-size:10pt;}
+  .brandsub{font-size:8pt;letter-spacing:1.5pt;color:#bcc9bb;text-transform:uppercase;}
+  .cover h1{font-size:40pt;line-height:1.04;letter-spacing:-.8pt;margin-bottom:6mm;}
+  .cover h1 span{color:#f4a97f;}
+  .cover .sub{font-size:12.5pt;line-height:1.5;color:#cfd8cc;max-width:150mm;}
+  .cover-badges{display:flex;gap:4mm;margin-top:12mm;}
+  .cbadge{border:.5mm solid rgba(255,255,255,.35);border-radius:2mm;padding:3.5mm 5mm;font-size:9pt;line-height:1.35;flex:1;}
+  .cbadge b{display:block;font-size:15pt;color:#f4a97f;margin-bottom:1mm;}
+  .cover-fish{margin:14mm 0 0;}
+  .cover-bottom{background:var(--orange);padding:7mm 18mm;display:flex;justify-content:space-between;align-items:center;font-size:9.5pt;}
+  .cover-bottom b{letter-spacing:1pt;}
+
+  /* ---------- toc / intro ---------- */
+  .twocol{display:flex;gap:8mm;}
+  .col{flex:1;}
+  .infocard{background:#fff;border-radius:2.5mm;padding:5mm;margin-bottom:4mm;border:.3mm solid #e2dbc9;}
+  .infocard h4{color:var(--green);font-size:11pt;margin-bottom:1.5mm;}
+  .infocard p{font-size:9pt;line-height:1.5;color:#454c40;}
+  .num{display:inline-flex;width:7mm;height:7mm;background:var(--orange);color:#fff;border-radius:50%;
+    align-items:center;justify-content:center;font-weight:bold;font-size:10pt;margin-right:2.5mm;flex-shrink:0;}
+  .payrow{display:flex;gap:4mm;margin-top:4mm;}
+  .paycard{flex:1;background:var(--green);color:#fff;border-radius:2.5mm;padding:4.5mm;}
+  .paycard h5{font-size:10pt;color:#f4a97f;margin-bottom:1.5mm;}
+  .paycard p{font-size:8.5pt;line-height:1.45;color:#d5ddd2;}
+
+  /* ---------- map ---------- */
+  .maplegend{display:flex;flex-wrap:wrap;gap:2mm 5mm;margin-top:3mm;font-size:8.5pt;}
+  .maplegend span{display:flex;align-items:center;gap:1.5mm;}
+  .dotN{width:3mm;height:3mm;border-radius:50%;background:#2d6a8f;display:inline-block;}
+  .dotW{width:3mm;height:3mm;border-radius:50%;background:var(--orange);display:inline-block;}
+  .dotS{width:3mm;height:3mm;border-radius:50%;background:#1f7a4d;display:inline-block;}
+  .dotE{width:3mm;height:3mm;border-radius:50%;background:#8f5f2d;display:inline-block;}
+
+  /* ---------- venue cards ---------- */
+  .dirhead{display:flex;align-items:center;gap:3mm;margin:5mm 0 3mm;}
+  .dirhead .db{width:4.5mm;height:4.5mm;border-radius:1mm;}
+  .dirhead h3{font-size:13pt;color:var(--green);}
+  .venue{
+    background:#fff;border:.3mm solid #e2dbc9;border-radius:2.5mm;
+    padding:4mm 4.5mm;margin-bottom:3.5mm;
+    border-left:1.6mm solid var(--orange);
+  }
+  .venue .vtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.5mm;}
+  .venue h4{font-size:11.5pt;color:var(--green);}
+  .venue .dist{font-size:8pt;color:#fff;background:var(--green2);border-radius:1.2mm;padding:.8mm 2.2mm;white-space:nowrap;}
+  .venue .road{font-size:8.5pt;color:var(--orange);font-weight:bold;margin-bottom:1.5mm;}
+  .venue p{font-size:8.8pt;line-height:1.45;color:#454c40;}
+  .vtags{margin-top:1.8mm;display:flex;flex-wrap:wrap;gap:1.5mm;}
+  .vtag{font-size:7.5pt;background:var(--sand);border-radius:1.2mm;padding:.8mm 2mm;color:#5a5240;}
+  .vprice{margin-top:1.8mm;font-size:8.8pt;color:var(--green);font-weight:bold;}
+
+  /* ---------- table ---------- */
+  table.cmp{width:100%;border-collapse:collapse;font-size:8.3pt;background:#fff;}
+  table.cmp th{background:var(--green);color:#fff;padding:2.2mm 2mm;text-align:left;font-size:8pt;}
+  table.cmp td{padding:2mm;border-bottom:.25mm solid #e4ddcc;line-height:1.35;vertical-align:top;}
+  table.cmp tr:nth-child(even) td{background:#faf7f0;}
+  .note{font-size:7.8pt;color:var(--muted);margin-top:2.5mm;line-height:1.45;}
+
+  /* ---------- rules ---------- */
+  .rule{display:flex;gap:3mm;margin-bottom:3.2mm;align-items:flex-start;}
+  .rule .rn{width:6.5mm;height:6.5mm;border-radius:50%;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:9pt;flex-shrink:0;margin-top:.5mm;}
+  .rule h5{font-size:10pt;color:var(--green);margin-bottom:.8mm;}
+  .rule p{font-size:8.8pt;line-height:1.45;color:#454c40;}
+  .warn{background:#fdeadd;border-left:1.6mm solid var(--orange);border-radius:0 2mm 2mm 0;
+    padding:3.5mm 4mm;font-size:8.8pt;line-height:1.5;margin-top:4mm;color:#5c4632;}
+
+  /* ---------- tackle ---------- */
+  .gearbox{background:#fff;border:.3mm solid #e2dbc9;border-radius:2.5mm;padding:4mm 4.5mm;margin-bottom:3.5mm;}
+  .gearbox h4{color:var(--green);font-size:11pt;margin-bottom:2mm;padding-bottom:1.5mm;border-bottom:.4mm solid var(--sand);}
+  .gearrow{display:flex;justify-content:space-between;font-size:8.8pt;padding:1.2mm 0;border-bottom:.2mm dotted #ddd5c2;line-height:1.4;}
+  .gearrow:last-child{border-bottom:none;}
+  .gearrow b{color:var(--green2);}
+  .gearrow span{text-align:right;color:#454c40;max-width:60%;}
+  .lure{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.8mm;}
+  .lure .ic{width:5mm;height:5mm;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:.6mm;
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.5pt;font-weight:bold;}
+  .lure p{font-size:8.8pt;line-height:1.45;color:#454c40;}
+  .lure b{color:var(--green);}
+
+  /* ---------- season ---------- */
+  .season{display:flex;gap:3mm;margin-top:3mm;}
+  .scard{flex:1;background:#fff;border:.3mm solid #e2dbc9;border-radius:2.5mm;overflow:hidden;}
+  .scard .sh{padding:2.5mm;color:#fff;font-weight:bold;font-size:9.5pt;text-align:center;}
+  .scard .sb{padding:3mm;font-size:8.3pt;line-height:1.45;color:#454c40;}
+  .meter{height:2.5mm;background:var(--sand);border-radius:2mm;margin:2mm 0 1mm;overflow:hidden;}
+  .meter i{display:block;height:100%;background:var(--orange);}
+
+  /* ---------- checklist ---------- */
+  .chk{display:flex;align-items:flex-start;gap:2.5mm;margin-bottom:2.2mm;font-size:9pt;line-height:1.4;color:#3a4136;}
+  .chk .box{width:3.8mm;height:3.8mm;border:.5mm solid var(--green);border-radius:.8mm;flex-shrink:0;margin-top:.4mm;}
+  .chk b{color:var(--green);}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--green);color:#fff;display:flex;flex-direction:column;padding:0;}
+  .cta-top{padding:18mm 18mm 10mm;flex:1;}
+  .cta h2{font-size:26pt;line-height:1.1;margin-bottom:5mm;}
+  .cta h2 span{color:#f4a97f;}
+  .cta p.big{font-size:11pt;line-height:1.6;color:#cfd8cc;max-width:160mm;margin-bottom:8mm;}
+  .promo{background:#fff;color:var(--ink);border-radius:3mm;padding:7mm;display:flex;align-items:center;gap:8mm;}
+  .promo .code{background:var(--orange);color:#fff;font-size:17pt;font-weight:bold;letter-spacing:2pt;
+    padding:4.5mm 7mm;border-radius:2mm;white-space:nowrap;}
+  .promo p{font-size:9.5pt;line-height:1.5;color:#454c40;}
+  .cta-list{display:flex;gap:5mm;margin-top:9mm;}
+  .cta-item{flex:1;border:.4mm solid rgba(255,255,255,.3);border-radius:2.5mm;padding:4.5mm;}
+  .cta-item b{color:#f4a97f;font-size:10.5pt;display:block;margin-bottom:1.5mm;}
+  .cta-item p{font-size:8.8pt;line-height:1.5;color:#cfd8cc;}
+  .cta-bottom{background:var(--orange);padding:7mm 18mm;font-size:9.5pt;display:flex;justify-content:space-between;}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 · COVER ============ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="brandline">
+      <div class="brandmark">РЕМИНГТОН</div>
+      <div class="brandsub">Экипировка для рыбалки и активного отдыха</div>
+    </div>
+    <h1>Форель<br>рядом с Москвой.<br><span>Гид по платникам<br>Подмосковья</span></h1>
+    <p class="sub">14 проверенных форелевых водоёмов по всем направлениям от МКАД: цены, правила, нормы вылова — и полный разбор снастей, с которыми клюёт даже у новичка.</p>
+    <div class="cover-badges">
+      <div class="cbadge"><b>14</b>платников с картой по направлениям</div>
+      <div class="cbadge"><b>4</b>формата оплаты — разобраны на пальцах</div>
+      <div class="cbadge"><b>1</b>стартовый сетап снастей под ключ</div>
+      <div class="cbadge"><b>12</b>месяцев: календарь клёва форели</div>
+    </div>
+    <svg class="cover-fish" viewBox="0 0 600 110" width="100%">
+      <g fill="none" stroke="#f4a97f" stroke-width="2.2" stroke-linecap="round">
+        <path d="M60 55 C120 12, 260 12, 330 45 C360 58, 390 62, 420 55 L470 30 L455 55 L470 80 L420 55 C390 48, 360 52, 330 65 C260 98, 120 98, 60 55 Z"/>
+        <circle cx="115" cy="47" r="4" fill="#f4a97f"/>
+        <path d="M180 30 C200 42, 200 68, 180 80 M240 24 C262 42, 262 68, 240 86"/>
+      </g>
+      <g fill="#f4a97f" opacity=".55">
+        <circle cx="510" cy="30" r="3"/><circle cx="528" cy="52" r="4"/><circle cx="514" cy="76" r="3"/>
+      </g>
+    </svg>
+  </div>
+  <div class="cover-bottom">
+    <b>REMINGTON · ГИД РЫБАКА</b>
+    <span>Сезон 2026 · Москва и область</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 · WHY / HOW ============ -->
+<div class="page">
+  <div class="kicker">Зачем этот гид</div>
+  <h2 class="sec">Форель — самая честная рыбалка выходного дня</h2>
+  <p class="lead">В дикой природе Подмосковья радужную форель не поймать — она здесь просто не живёт. Зато на платных водоёмах её запускают тоннами с сентября по май, и это лучшая «школа» спиннинга: рыба сильная, красивая, бонусом — отличный ужин. Час от дома, никакой лотереи с клёвом, подходит для выезда с семьёй.</p>
+
+  <div class="twocol">
+    <div class="col">
+      <div class="infocard">
+        <h4><span class="num">1</span>Почему именно платник</h4>
+        <p>Рыба гарантированно есть — зарыбление идёт регулярно, часто при вас. Есть инфраструктура: мостки, беседки, мангалы, прокат снастей, туалет. Для первого выезда и «рыбалки с детьми» — идеальный формат.</p>
+      </div>
+      <div class="infocard">
+        <h4><span class="num">2</span>Почему форель</h4>
+        <p>Радужная форель активна именно в холодной воде: клюёт с осени до весны, когда «дикая» рыбалка замирает. Бьётся до последнего, делает свечки — эмоций больше, чем от карпа втрое большего веса.</p>
+      </div>
+      <div class="infocard">
+        <h4><span class="num">3</span>Сколько это стоит</h4>
+        <p>Реально уложиться в 3 000–5 000 ₽ за день: путёвка с нормой вылова 3–5 кг либо оплата по факту за килограмм. Форель в магазине стоит 900–1400 ₽/кг — так что улов частично «окупает» выезд.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="infocard" style="background:var(--sand);border-color:#d9cfb8;">
+        <h4>Как читать карточки водоёмов</h4>
+        <p style="margin-bottom:2mm;">У каждого платника в гиде указаны: шоссе и удалённость от МКАД, формат оплаты, ориентир цен, особенности и «фишки» места.</p>
+        <p style="margin-bottom:2mm;"><b>Важно:</b> цены даны ориентировочно на начало сезона-2026 и меняются в течение года. Перед выездом всегда проверяйте прайс и график зарыбления на сайте или по телефону водоёма.</p>
+        <p>Телефоны и сайты легко находятся по названию — у всех платников есть актуальные группы ВК/Telegram с отчётами о запусках.</p>
+      </div>
+      <div class="infocard">
+        <h4><span class="num">4</span>Когда ехать</h4>
+        <p>Пик — октябрь–декабрь и март–апрель. Лучшее время дня — первые 2–3 часа после рассвета и час после запуска рыбы. В выходные к обеду форель «выбивают» — приезжайте к открытию.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-top:5mm;">Форматы оплаты</div>
+  <div class="payrow">
+    <div class="paycard">
+      <h5>Путёвка + норма</h5>
+      <p>Платите за день (1 500–4 000 ₽), в цену включено 3–5 кг рыбы. Перелов — доплата за кг. Самый частый формат.</p>
+    </div>
+    <div class="paycard">
+      <h5>Оплата за улов</h5>
+      <p>Вход символический или бесплатный, платите только за пойманное: 700–1 600 ₽/кг. Честно для новичка.</p>
+    </div>
+    <div class="paycard">
+      <h5>Безлимит</h5>
+      <p>Дороже (от 4 000–6 000 ₽), но всё пойманное — ваше без доплат. Выгодно, когда рука уже набита.</p>
+    </div>
+    <div class="paycard">
+      <h5>Спорт / C&amp;R</h5>
+      <p>«Поймал-отпустил»: дешёвая путёвка, рыбу не забираете. Безбородые крючки. Максимум поклёвок за день.</p>
+    </div>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">2</span></div>
+</div>
+
+<!-- ============ PAGE 3 · MAP ============ -->
+<div class="page">
+  <div class="kicker">Карта-схема</div>
+  <h2 class="sec">14 платников по направлениям от МКАД</h2>
+  <p class="lead" style="margin-bottom:2mm;">Схема — не для навигации, а для выбора: смотрите своё «домашнее» шоссе и ближайшие точки. Номера соответствуют карточкам на следующих страницах.</p>
+
+  <svg viewBox="0 0 700 560" width="100%" style="background:#fff;border-radius:3mm;border:.3mm solid #e2dbc9;">
+    <!-- highways -->
+    <g stroke="#cfc7b2" stroke-width="2">
+      <line x1="350" y1="280" x2="350" y2="30"/>   <!-- Дмитровское N -->
+      <line x1="350" y1="280" x2="480" y2="45"/>   <!-- Ярославское NE -->
+      <line x1="350" y1="280" x2="600" y2="120"/>  <!-- Щёлковское E-NE -->
+      <line x1="350" y1="280" x2="655" y2="280"/>  <!-- Горьковское E -->
+      <line x1="350" y1="280" x2="600" y2="440"/>  <!-- Новорязанское SE -->
+      <line x1="350" y1="280" x2="430" y2="525"/>  <!-- Каширское S -->
+      <line x1="350" y1="280" x2="350" y2="535"/>  <!-- Симферопольское S -->
+      <line x1="350" y1="280" x2="270" y2="525"/>  <!-- Калужское S -->
+      <line x1="350" y1="280" x2="150" y2="480"/>  <!-- Киевское SW -->
+      <line x1="350" y1="280" x2="70 " y2="380"/>  <!-- Минское W -->
+      <line x1="350" y1="280" x2="45"  y2="280"/>  <!-- Можайское W -->
+      <line x1="350" y1="280" x2="70"  y2="170"/>  <!-- Новорижское NW -->
+      <line x1="350" y1="280" x2="160" y2="60"/>   <!-- Ленинградское NW -->
+    </g>
+    <!-- MKAD ring -->
+    <circle cx="350" cy="280" r="52" fill="#f7f4ec" stroke="#16382b" stroke-width="3"/>
+    <text x="350" y="276" text-anchor="middle" font-size="14" font-weight="bold" fill="#16382b">МОСКВА</text>
+    <text x="350" y="292" text-anchor="middle" font-size="9" fill="#6b7265">МКАД</text>
+
+    <!-- highway labels -->
+    <g font-size="10" fill="#6b7265">
+      <text x="356" y="42">Дмитровское ш.</text>
+      <text x="470" y="38">Ярославское ш.</text>
+      <text x="588" y="110">Щёлковское ш.</text>
+      <text x="580" y="270">Горьковское ш.</text>
+      <text x="545" y="458">Новорязанское ш.</text>
+      <text x="400" y="542">Каширское ш.</text>
+      <text x="292" y="552">Симферопольское ш.</text>
+      <text x="205" y="530">Калужское ш.</text>
+      <text x="95" y="500">Киевское ш.</text>
+      <text x="30" y="400">Минское ш.</text>
+      <text x="18" y="265">Можайское ш.</text>
+      <text x="40" y="158">Новорижское ш.</text>
+      <text x="120" y="50">Ленинградское ш.</text>
+    </g>
+
+    <!-- venues: N blue, W orange, S green, E brown -->
+    <g font-size="11" font-weight="bold">
+      <!-- North -->
+      <circle cx="350" cy="150" r="11" fill="#2d6a8f"/><text x="350" y="154" text-anchor="middle" fill="#fff">1</text>
+      <circle cx="350" cy="85"  r="11" fill="#2d6a8f"/><text x="350" y="89"  text-anchor="middle" fill="#fff">2</text>
+      <circle cx="330" cy="255" r="11" fill="#2d6a8f"/><text x="330" y="259" text-anchor="middle" fill="#fff">3</text>
+      <!-- West -->
+      <circle cx="255" cy="215" r="11" fill="#e8672c"/><text x="255" y="219" text-anchor="middle" fill="#fff">4</text>
+      <circle cx="205" cy="197" r="11" fill="#e8672c"/><text x="205" y="201" text-anchor="middle" fill="#fff">5</text>
+      <circle cx="150" cy="175" r="11" fill="#e8672c"/><text x="150" y="179" text-anchor="middle" fill="#fff">6</text>
+      <circle cx="95"  cy="152" r="11" fill="#e8672c"/><text x="95"  y="156" text-anchor="middle" fill="#fff">7</text>
+      <circle cx="280" cy="240" r="11" fill="#e8672c"/><text x="280" y="244" text-anchor="middle" fill="#fff">8</text>
+      <!-- South -->
+      <circle cx="316" cy="385" r="11" fill="#1f7a4d"/><text x="316" y="389" text-anchor="middle" fill="#fff">9</text>
+      <circle cx="350" cy="440" r="11" fill="#1f7a4d"/><text x="350" y="444" text-anchor="middle" fill="#fff">10</text>
+      <circle cx="205" cy="435" r="11" fill="#1f7a4d"/><text x="205" y="439" text-anchor="middle" fill="#fff">11</text>
+      <!-- East -->
+      <circle cx="452" cy="349" r="11" fill="#8f5f2d"/><text x="452" y="353" text-anchor="middle" fill="#fff">12</text>
+      <circle cx="405" cy="317" r="11" fill="#8f5f2d"/><text x="405" y="321" text-anchor="middle" fill="#fff">13</text>
+      <circle cx="510" cy="388" r="11" fill="#8f5f2d"/><text x="510" y="392" text-anchor="middle" fill="#fff">14</text>
+    </g>
+  </svg>
+
+  <div class="maplegend">
+    <span><i class="dotN"></i>Север: 1 — Funny Fish · 2 — «Ба! Рыбина!» · 3 — «Рыбацкая деревня» (ВДНХ)</span>
+    <span><i class="dotW"></i>Запад: 4 — «Золотой Сазан» · 5 — «Шамиран» · 6 — «Раково» · 7 — «Фишка-Петряиха» · 8 — «Long Fish»</span>
+  </div>
+  <div class="maplegend" style="margin-top:1mm;">
+    <span><i class="dotS"></i>Юг: 9 — «Сосенки» · 10 — «Ихтиолог» · 11 — «Двенди»</span>
+    <span><i class="dotE"></i>Восток: 12 — «Клёвое место» (Лыткарино) · 13 — «Белая Дача» · 14 — «Каньон»</span>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">3</span></div>
+</div>
+
+<!-- ============ PAGE 4 · NORTH ============ -->
+<div class="page">
+  <div class="kicker">Каталог водоёмов · 1/4</div>
+  <h2 class="sec">Север: Дмитровское направление</h2>
+  <p class="lead">Классика для жителей севера Москвы: до часа в пути, развитая инфраструктура, регулярные запуски всю зиму.</p>
+
+  <div class="venue">
+    <div class="vtop"><h4>1 · Funny Fish (Марфино)</h4><span class="dist">~20 км от МКАД</span></div>
+    <div class="road">Дмитровское шоссе</div>
+    <p>Один из самых известных форелевых платников севера: несколько прудов, отдельная форелевая зона, зимой — ловля со льда и незамерзающие участки у аэраторов. Частые зарыбления крупной форелью 1–2 кг, есть трофейные экземпляры. Прокат снастей, беседки, коптильня.</p>
+    <div class="vprice">Ориентир: путёвка от ~1 500 ₽, форель по прайсу за кг; есть безлимитные тарифы</div>
+    <div class="vtags"><span class="vtag">зимняя ловля</span><span class="vtag">прокат снастей</span><span class="vtag">семейный формат</span><span class="vtag">беседки/мангалы</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>2 · «Ба! Рыбина!» (Икша)</h4><span class="dist">~25 км от МКАД</span></div>
+    <div class="road">Дмитровское шоссе, район Икши</div>
+    <p>Рыбхозяйство с историей и «спортивным» уклоном: сюда ездят и новички, и форелевые спортсмены. Хорошая плотность рыбы, честные запуски, удобные мостки. Кроме форели — осётр, карп, сиг. Зимой водоём популярен у любителей жерлиц и балансира.</p>
+    <div class="vprice">Ориентир: путёвка с нормой вылова, перелов — доплата за кг</div>
+    <div class="vtags"><span class="vtag">осётр в прилове</span><span class="vtag">мостки</span><span class="vtag">спорт-сектора</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>3 · «Рыбацкая деревня» (ВДНХ)</h4><span class="dist">внутри Москвы</span></div>
+    <div class="road">Москва, территория ВДНХ</div>
+    <p>Единственный полноценный форелевый водоём внутри города — можно приехать на метро. Пруды зарыбляются форелью, осетром и сигом круглый год. Цены выше областных, но для «попробовать после работы» и рыбалки с детьми без машины — вариант без конкурентов. Ресторан приготовит ваш улов.</p>
+    <div class="vprice">Ориентир: вход + оплата улова за кг (форель — от ~1 500 ₽/кг); аренда снастей на месте</div>
+    <div class="vtags"><span class="vtag">без машины</span><span class="vtag">круглый год</span><span class="vtag">ресторан</span><span class="vtag">дороже среднего</span></div>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">4</span></div>
+</div>
+
+<!-- ============ PAGE 5 · WEST ============ -->
+<div class="page">
+  <div class="kicker">Каталог водоёмов · 2/4</div>
+  <h2 class="sec">Запад: Новорижское и Ильинское направления</h2>
+  <p class="lead">Самое «форелевое» направление области — от премиальных клубов у МКАД до демократичных прудов Рузского района.</p>
+
+  <div class="venue">
+    <div class="vtop"><h4>4 · «Золотой Сазан» (Новорижский)</h4><span class="dist">~12 км от МКАД</span></div>
+    <div class="road">Новорижское шоссе</div>
+    <p>Крупнейший рыболовный клуб Подмосковья премиум-сегмента. Кроме форели — сиг, осётр, белуга, щука, карп. Идеальная инфраструктура: тёплые домики, беседки, ресторан, егеря. Формат «всё включено» для корпоративов и выездов с семьёй, когда комфорт важнее цены.</p>
+    <div class="vprice">Ориентир: световой день — от ~5 000–6 000 ₽ (гостевое посещение), улов по прайсу</div>
+    <div class="vtags"><span class="vtag">премиум</span><span class="vtag">близко к МКАД</span><span class="vtag">егеря</span><span class="vtag">трофеи</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>5 · «Шамиран» (Красногорский район)</h4><span class="dist">~10 км от МКАД</span></div>
+    <div class="road">Ильинское шоссе</div>
+    <p>Компактный уютный платник в 15 минутах от МКАД: каскад прудов, форелевая зона с осени по весну, летом — карп и осётр. Любим «вечерними» рыбаками: можно успеть после работы. Есть подогреваемые беседки и прокат.</p>
+    <div class="vprice">Ориентир: путёвка + оплата улова за кг</div>
+    <div class="vtags"><span class="vtag">быстро добраться</span><span class="vtag">вечерняя рыбалка</span><span class="vtag">компакт</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>6 · «Раково» (Истринский район)</h4><span class="dist">~50 км от МКАД</span></div>
+    <div class="road">Новорижское / Волоколамское шоссе</div>
+    <p>Легендарное место форелевых спортсменов: просторные пруды на реке Малая Истра, регулярные турниры, сильная «эриа»-тусовка. Отличная школа: подсматривайте за спортсменами и повторяйте. Большая территория — есть где встать даже в выходные.</p>
+    <div class="vprice">Ориентир: путёвка с нормой; спортивные C&amp;R-сектора дешевле</div>
+    <div class="vtags"><span class="vtag">спорт и турниры</span><span class="vtag">простор</span><span class="vtag">C&amp;R-сектора</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>7 · «Фишка-Петряиха» (Рузский район)</h4><span class="dist">~80 км от МКАД</span></div>
+    <div class="road">Новорижское шоссе</div>
+    <p>Демократичный клуб «Фишка»: форелевые пруды в Петряихе и Данилове. Один из самых доступных ценников области — путёвки от ~800–1 000 ₽, дневные тарифы на гектарном пруду с включённой нормой. Далеко, зато дёшево, просторно и рыбно; много положительных отчётов на форумах.</p>
+    <div class="vprice">Ориентир: путёвка от ~800–1 000 ₽; дневная с нормой ~3 500–4 000 ₽; перелов от ~850 ₽/кг</div>
+    <div class="vtags"><span class="vtag">бюджетно</span><span class="vtag">ночная рыбалка</span><span class="vtag">домики</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>8 · Long Fish (Пятницкое направление)</h4><span class="dist">~15 км от МКАД</span></div>
+    <div class="road">Пятницкое шоссе</div>
+    <p>Небольшой аккуратный платник северо-запада с форелевой зоной в холодный сезон. Хвалят за плотные запуски и адекватные цены; в выходные лучше приезжать к открытию — секторов немного.</p>
+    <div class="vprice">Ориентир: путёвка + улов за кг</div>
+    <div class="vtags"><span class="vtag">северо-запад</span><span class="vtag">плотные запуски</span></div>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">5</span></div>
+</div>
+
+<!-- ============ PAGE 6 · SOUTH ============ -->
+<div class="page">
+  <div class="kicker">Каталог водоёмов · 3/4</div>
+  <h2 class="sec">Юг: Калужское и Симферопольское направления</h2>
+  <p class="lead">Для жителей юга и Новой Москвы: от «Сосенок» в 7 км от МКАД до просторных хозяйств за Подольском.</p>
+
+  <div class="venue">
+    <div class="vtop"><h4>9 · «Сосенки»</h4><span class="dist">~7 км от МКАД</span></div>
+    <div class="road">Калужское шоссе</div>
+    <p>Старейший платник Новой Москвы: несколько прудов, форель с сентября по май, летом карповая программа. Очень удобная логистика — многие приезжают на 2–3 часа утром. Развитая инфраструктура: беседки, кафе, прокат, зимой — прокат ледобуров и палаток.</p>
+    <div class="vprice">Ориентир: путёвка + улов за кг; короткие «утренние» тарифы</div>
+    <div class="vtags"><span class="vtag">7 км от МКАД</span><span class="vtag">утренние тарифы</span><span class="vtag">инфраструктура</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>10 · Клуб «Ихтиолог» (Серпуховское направление)</h4><span class="dist">~50 км от МКАД</span></div>
+    <div class="road">Симферопольское шоссе</div>
+    <p>Форелевый клуб с регулярным зарыблением радужной и янтарной форелью. Аккуратная территория, чёткие правила, взвешивание при вас. Хорош для первого выезда: администраторы подскажут и с приманкой, и с точкой.</p>
+    <div class="vprice">Ориентир: оплата улова от ~1 590 ₽/кг, вход/путёвка по прайсу клуба</div>
+    <div class="vtags"><span class="vtag">янтарная форель</span><span class="vtag">для новичков</span><span class="vtag">чёткие правила</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>11 · Эко-парк «Двенди» (Наро-Фоминский район)</h4><span class="dist">~35 км от МКАД</span></div>
+    <div class="road">Киевское / Минское шоссе</div>
+    <p>Каскад прудов с раздельными зонами: форелевый пруд, карповый, «детский». Форель запускают с осени до весны, есть зимняя ловля со льда. Сильная семейная инфраструктура: домики, баня, зоопарк для детей — рыбалку легко совместить с выходными всей семьёй.</p>
+    <div class="vprice">Ориентир: путёвка с нормой вылова + доплата за перелов</div>
+    <div class="vtags"><span class="vtag">семейный</span><span class="vtag">баня/домики</span><span class="vtag">детская зона</span></div>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">6</span></div>
+</div>
+
+<!-- ============ PAGE 7 · EAST ============ -->
+<div class="page">
+  <div class="kicker">Каталог водоёмов · 4/4</div>
+  <h2 class="sec">Восток и юго-восток</h2>
+  <p class="lead">Направление недооценено — а зря: здесь два платника в 10 минутах от МКАД и один из самых атмосферных «карьеров» области.</p>
+
+  <div class="venue">
+    <div class="vtop"><h4>12 · «Клёвое место» (Лыткарино)</h4><span class="dist">~10 км от МКАД</span></div>
+    <div class="road">Новорязанское шоссе</div>
+    <p>Известный водоём на карьере в Лыткарино: глубокий, с чистой водой — форель здесь бодрая и «спортивная». Регулярные запуски в холодный сезон, ночная рыбалка, прокат. Из-за глубины рыба держится в толще — пригодятся тонущие приманки.</p>
+    <div class="vprice">Ориентир: путёвка + улов за кг; ночные тарифы</div>
+    <div class="vtags"><span class="vtag">глубокий карьер</span><span class="vtag">ночная ловля</span><span class="vtag">чистая вода</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>13 · «Белая Дача» (Котельники)</h4><span class="dist">~2 км от МКАД</span></div>
+    <div class="road">Новорязанское шоссе / Котельники</div>
+    <p>Пруды практически на границе с Москвой — ближайший к городу платник юго-востока. Форель в холодный сезон, карп и осётр летом. Формат «приехал на пару часов после работы»: быстро, просто, без пафоса.</p>
+    <div class="vprice">Ориентир: путёвка + улов за кг</div>
+    <div class="vtags"><span class="vtag">у самого МКАД</span><span class="vtag">после работы</span></div>
+  </div>
+
+  <div class="venue">
+    <div class="vtop"><h4>14 · Парк «Каньон»</h4><span class="dist">юго-восток области</span></div>
+    <div class="road">Новорязанское направление</div>
+    <p>Парк отдыха и рыбалки с отдельной форелевой программой: запуски рыбы по расписанию (утром к открытию), просторная зона ловли, беседки и кафе. Удобен для смешанных компаний — часть ловит, часть отдыхает.</p>
+    <div class="vprice">Ориентир: путёвка по тарифам парка, зарыбление к 8:00 и в течение дня</div>
+    <div class="vtags"><span class="vtag">парк-формат</span><span class="vtag">запуски по расписанию</span></div>
+  </div>
+
+  <div class="warn"><b>Проверяйте перед выездом:</b> платники периодически меняют режим работы, закрываются на просушку прудов или переезжают на летний режим без форели. Звонок за день до поездки экономит 100 км пустого пробега. Актуальные отчёты ищите в разделе «Платные пруды» форума Русфишинг — там же подскажут, где был последний запуск.</div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">7</span></div>
+</div>
+
+<!-- ============ PAGE 8 · COMPARISON TABLE ============ -->
+<div class="page">
+  <div class="kicker">Сводная таблица</div>
+  <h2 class="sec">Все 14 платников на одном развороте</h2>
+  <p class="lead" style="margin-bottom:3mm;">Быстрый выбор: по удалённости, бюджету и формату. Цены — ориентир начала 2026 года.</p>
+
+  <table class="cmp">
+    <tr><th style="width:4%;">№</th><th style="width:22%;">Водоём</th><th style="width:20%;">Направление</th><th style="width:12%;">От МКАД</th><th style="width:20%;">Формат оплаты</th><th style="width:22%;">Кому подойдёт</th></tr>
+    <tr><td>1</td><td>Funny Fish</td><td>Дмитровское ш.</td><td>~20 км</td><td>путёвка + кг / безлимит</td><td>зимняя ловля, семьи</td></tr>
+    <tr><td>2</td><td>«Ба! Рыбина!»</td><td>Дмитровское ш.</td><td>~25 км</td><td>путёвка + норма</td><td>практика, спорт-уклон</td></tr>
+    <tr><td>3</td><td>«Рыбацкая деревня»</td><td>Москва, ВДНХ</td><td>в городе</td><td>вход + улов за кг</td><td>без машины, с детьми</td></tr>
+    <tr><td>4</td><td>«Золотой Сазан»</td><td>Новорижское ш.</td><td>~12 км</td><td>день от ~5–6 тыс. ₽</td><td>премиум, корпоративы</td></tr>
+    <tr><td>5</td><td>«Шамиран»</td><td>Ильинское ш.</td><td>~10 км</td><td>путёвка + кг</td><td>выезд после работы</td></tr>
+    <tr><td>6</td><td>«Раково»</td><td>Новорижское ш.</td><td>~50 км</td><td>путёвка / C&amp;R-сектора</td><td>спортсмены, продвинутые</td></tr>
+    <tr><td>7</td><td>«Фишка-Петряиха»</td><td>Новорижское ш.</td><td>~80 км</td><td>от ~800 ₽, день ~3,5–4 тыс. ₽</td><td>бюджет, ночёвка</td></tr>
+    <tr><td>8</td><td>Long Fish</td><td>Пятницкое ш.</td><td>~15 км</td><td>путёвка + кг</td><td>северо-запад, короткие выезды</td></tr>
+    <tr><td>9</td><td>«Сосенки»</td><td>Калужское ш.</td><td>~7 км</td><td>путёвка + кг, утренние тарифы</td><td>Новая Москва, новички</td></tr>
+    <tr><td>10</td><td>«Ихтиолог»</td><td>Симферопольское ш.</td><td>~50 км</td><td>улов от ~1 590 ₽/кг</td><td>первый выезд «за руку»</td></tr>
+    <tr><td>11</td><td>«Двенди»</td><td>Киевское/Минское ш.</td><td>~35 км</td><td>путёвка + норма</td><td>семейные выходные</td></tr>
+    <tr><td>12</td><td>«Клёвое место»</td><td>Новорязанское ш.</td><td>~10 км</td><td>путёвка + кг, ночь</td><td>юго-восток, «спортивная» рыба</td></tr>
+    <tr><td>13</td><td>«Белая Дача»</td><td>Котельники</td><td>~2 км</td><td>путёвка + кг</td><td>2–3 часа после работы</td></tr>
+    <tr><td>14</td><td>«Каньон»</td><td>Новорязанское напр.</td><td>юго-восток</td><td>тарифы парка</td><td>смешанные компании</td></tr>
+  </table>
+
+  <p class="note">Ориентиры по рынку на начало 2026 г.: гостевые путёвки — от 500–800 ₽; дневная путёвка с нормой 3–5 кг — 1 500–4 000 ₽; оплата улова — 700–1 600 ₽/кг в зависимости от навески; безлимит — от 4 000–6 000 ₽; премиум-клубы — от 5 000–6 000 ₽ за день. Все цены меняются в течение сезона — сверяйтесь с прайсом водоёма.</p>
+
+  <div class="infocard" style="margin-top:4mm;background:var(--sand);border-color:#d9cfb8;">
+    <h4>Как выбрать первый платник</h4>
+    <p><b>Живёте на юге</b> — начните с «Сосенок»: близко и всё объяснят. <b>На севере</b> — Funny Fish. <b>На западе</b> — «Шамиран» на разведку, «Раково» — когда захочется уровня. <b>На востоке</b> — «Клёвое место». Без машины — «Рыбацкая деревня» на ВДНХ. Хотите дёшево и на весь день с ночёвкой — «Фишка-Петряиха».</p>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">8</span></div>
+</div>
+
+<!-- ============ PAGE 9 · RULES ============ -->
+<div class="page">
+  <div class="kicker">Правила и этикет</div>
+  <h2 class="sec">7 правил платника, о которых молчат прайсы</h2>
+  <p class="lead">У каждого водоёма свои нюансы, но эти правила почти универсальны. Знаете их — не попадёте на штраф и не испортите рыбалку соседям.</p>
+
+  <div class="rule"><div class="rn">1</div><div><h5>Норма вылова — это обязательство, а не право</h5>
+  <p>Если в путёвку включено 3 кг — всё, что поймали сверх, вы обязаны выкупить по прайсу. Отпускать «лишнюю» рыбу на kill-секторах запрещено: травмированная форель погибает. Хотите ловить много и отпускать — берите спортивную C&amp;R-путёвку.</p></div></div>
+
+  <div class="rule"><div class="rn">2</div><div><h5>Одна путёвка — одна-две снасти</h5>
+  <p>Стандарт: 1 спиннинг или 1–2 поплавочные/донные снасти на человека. Запасные — в чехле, не в воде. «Дежурная удочка на пасту» параллельно со спиннингом почти везде считается второй снастью.</p></div></div>
+
+  <div class="rule"><div class="rn">3</div><div><h5>Живец под запретом</h5>
+  <p>Практически все платники запрещают живца и принесённую с собой рыбу — так заносят инфекции, способные выкосить весь пруд. За нарушение — как минимум удаление с водоёма без возврата денег.</p></div></div>
+
+  <div class="rule"><div class="rn">4</div><div><h5>Подсак обязателен, багор запрещён</h5>
+  <p>Форель сходит у берега чаще, чем где-либо. Подсак с силиконовой (резиновой) сеткой — must have: он не снимает слизь и не рвёт плавники, если рыбу нужно отпустить.</p></div></div>
+
+  <div class="rule"><div class="rn">5</div><div><h5>На C&amp;R-секторах — безбородый крючок</h5>
+  <p>Спортивные сектора требуют безбородые одинарники и запрещают тройники. Бородку легко прижать пассатижами прямо на месте — сходов больше не станет, вопреки мифу.</p></div></div>
+
+  <div class="rule"><div class="rn">6</div><div><h5>Дистанция и «чужая» рыба</h5>
+  <p>Не вставайте ближе 10–15 м к соседу без спроса и не забрасывайте в чужой сектор. Если запуск рыбы произошёл у соседних мостков — дождитесь, пока стая разойдётся, а не бегите с спиннингом через весь пруд.</p></div></div>
+
+  <div class="rule"><div class="rn">7</div><div><h5>Взвешивание и расчёт — до отъезда</h5>
+  <p>Рыбу предъявляют на взвешивание целиком, не потрошёной. Свои весы-безмен помогут прикинуть улов заранее и не удивляться на кассе. Чек сохраняйте до выезда с территории.</p></div></div>
+
+  <div class="warn"><b>Юридическая памятка:</b> платная рыбалка не требует именной путёвки Росрыболовства — вы ловите в аквакультурном хозяйстве по внутренним правилам. Но норму провоза рыбы никто не отменял: чек с платника — ваш документ на улов при любых вопросах по дороге домой.</div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">9</span></div>
+</div>
+
+<!-- ============ PAGE 10 · TACKLE ============ -->
+<div class="page">
+  <div class="kicker">Снаряжение</div>
+  <h2 class="sec">Стартовый сетап: форель на спиннинг</h2>
+  <p class="lead">«Эриа»-ловля (area fishing) — самый азартный способ. Вот комплект, с которым не будет мучительно больно ни на первом выезде, ни через год.</p>
+
+  <div class="twocol">
+    <div class="col">
+      <div class="gearbox">
+        <h4>Комплект «эриа»</h4>
+        <div class="gearrow"><b>Спиннинг</b><span>1,8–2,1 м, тест 0,5–5 г (до 7 г), мягкий регулярный строй</span></div>
+        <div class="gearrow"><b>Катушка</b><span>размер 1000–2000, плавный фрикцион — критично!</span></div>
+        <div class="gearrow"><b>Шнур</b><span>PE #0.3–0.4 или эстер; новичку проще монолеска 0,16–0,18</span></div>
+        <div class="gearrow"><b>Поводок</b><span>флюорокарбон 0,14–0,18 мм, 30–50 см</span></div>
+        <div class="gearrow"><b>Застёжка</b><span>микрозастёжка №00–0, без вертлюга</span></div>
+      </div>
+      <div class="gearbox">
+        <h4>Обязательная мелочёвка</h4>
+        <div class="gearrow"><b>Подсак</b><span>с силиконовой сеткой, ручка от 1,5 м</span></div>
+        <div class="gearrow"><b>Пассатижи</b><span>прижать бородку, вынуть крючок</span></div>
+        <div class="gearrow"><b>Весы-безмен</b><span>контроль нормы вылова</span></div>
+        <div class="gearrow"><b>Очки</b><span>поляризационные — видно рыбу и проводку</span></div>
+        <div class="gearrow"><b>Кукан/пакет</b><span>для рыбы навынос + термосумка летом</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="gearbox">
+        <h4>Приманки: рабочая коробка</h4>
+        <div class="lure"><div class="ic">1</div><p><b>Форелевые колебалки 1,5–3,5 г</b> — основа основ. Начните с 6–8 штук контрастных пар: кислотная/тёмная, серебро/медь. Медленная равномерная проводка с паузами.</p></div>
+        <div class="lure"><div class="ic">2</div><p><b>Кренки 25–38 мм</b> — мелководные и с заглублением до 1,5 м. Спасают, когда форель стоит в толще и игнорирует железо.</p></div>
+        <div class="lure"><div class="ic">3</div><p><b>«Резина» на джиг-головке 0,4–1,5 г</b> — съедобный силикон 1,5–2 дюйма. Медленная ступенька у дна для пассивной рыбы.</p></div>
+        <div class="lure"><div class="ic">4</div><p><b>Форелевая паста</b> (где разрешена) — на поплавок или донку-«бомбарду». Выручает детей и новичков: работает без всякой техники.</p></div>
+        <div class="lure"><div class="ic">5</div><p><b>Зимой со льда</b> — балансиры 3–5 см, мормышка с пастой, безнасадка. На незамерзающих прудах спиннинг работает круглый год.</p></div>
+      </div>
+      <div class="infocard" style="background:var(--sand);border-color:#d9cfb8;">
+        <h4>Тактика первого часа</h4>
+        <p>Узнайте у администратора точку последнего запуска — свежая форель 1–2 дня держится стаей у места высадки. Начинайте с колебалки на счёт «3» после заброса, каждые 5–7 забросов меняйте горизонт или цвет. Нет поклёвок 20 минут — меняйте тип приманки, а не точку.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">10</span></div>
+</div>
+
+<!-- ============ PAGE 11 · SEASON + CHECKLIST ============ -->
+<div class="page">
+  <div class="kicker">Календарь и сборы</div>
+  <h2 class="sec">Сезон форели и чек-лист выезда</h2>
+
+  <div class="season">
+    <div class="scard"><div class="sh" style="background:#b3722a;">Сентябрь — ноябрь</div><div class="sb">
+      <b>Старт сезона.</b> Вода остывает, начинаются массовые запуски. Лучший клёв года: форель активна весь день.
+      <div class="meter"><i style="width:95%;"></i></div>Активность: максимум
+    </div></div>
+    <div class="scard"><div class="sh" style="background:#2d6a8f;">Декабрь — февраль</div><div class="sb">
+      <b>Лёд и аэраторы.</b> Ловля со льда: балансир, мормышка, паста. На незамерзающих участках — спиннинг.
+      <div class="meter"><i style="width:65%;"></i></div>Активность: средняя, окна по погоде
+    </div></div>
+    <div class="scard"><div class="sh" style="background:#1f7a4d;">Март — май</div><div class="sb">
+      <b>Второй пик.</b> Талая вода бодрит рыбу, запуски возобновляются. Апрель — месяц трофеев.
+      <div class="meter"><i style="width:90%;"></i></div>Активность: высокая
+    </div></div>
+    <div class="scard"><div class="sh" style="background:#8f5f2d;">Июнь — август</div><div class="sb">
+      <b>Межсезонье.</b> Тёплая вода — форель пассивна, многие платники её не запускают. Время карпа и осетра.
+      <div class="meter"><i style="width:25%;"></i></div>Активность: низкая
+    </div></div>
+  </div>
+
+  <div class="twocol" style="margin-top:5mm;">
+    <div class="col">
+      <div class="kicker">Чек-лист: снасти и документы</div>
+      <div class="chk"><div class="box"></div><span>Спиннинг «эриа» + запасной комплект шнура/лески</span></div>
+      <div class="chk"><div class="box"></div><span>Коробка приманок: колебалки, кренки, резина, паста</span></div>
+      <div class="chk"><div class="box"></div><span>Подсак с силиконовой сеткой, пассатижи, застёжки</span></div>
+      <div class="chk"><div class="box"></div><span>Весы-безмен, кукан или пакеты + термосумка</span></div>
+      <div class="chk"><div class="box"></div><span>Поляризационные очки, налобный фонарь</span></div>
+      <div class="chk"><div class="box"></div><span>Наличные/карта: путёвка + возможный перелов</span></div>
+      <div class="chk"><div class="box"></div><span>Телефон водоёма: узнать про запуск накануне</span></div>
+      <div class="chk"><div class="box"></div><span>Зимой: ледобур, палатка, багорик, спасалки</span></div>
+    </div>
+    <div class="col">
+      <div class="kicker">Чек-лист: экипировка по погоде</div>
+      <div class="chk"><div class="box"></div><span><b>Термобельё</b> — база любого выезда с октября по апрель</span></div>
+      <div class="chk"><div class="box"></div><span><b>Флисовая кофта</b> — средний утепляющий слой</span></div>
+      <div class="chk"><div class="box"></div><span><b>Демисезонный или зимний костюм</b> — мембрана от ветра и мороси; зимой — «поплавок» или костюм −25…−30°</span></div>
+      <div class="chk"><div class="box"></div><span><b>Сапоги ЭВА</b> с вкладышем — ноги сухие и тёплые весь день</span></div>
+      <div class="chk"><div class="box"></div><span><b>Перчатки</b> с откидными пальцами + запасная пара</span></div>
+      <div class="chk"><div class="box"></div><span><b>Шапка/бафф</b>, зимой — балаклава на ветер</span></div>
+      <div class="chk"><div class="box"></div><span>Термос 1 л + перекус: клёв ждать теплее с чаем</span></div>
+      <div class="chk"><div class="box"></div><span>Сиденье/платформа и зонт — комфорт решает</span></div>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-top:4mm;"><b>Правило трёх слоёв:</b> отводящее влагу термобельё + утепляющий флис + мембранная защита от ветра и воды. На форелевой рыбалке вы то активно ходите со спиннингом, то сидите в засаде — одевайтесь так, чтобы слой можно было снять или добавить за минуту. Весь комплект — в разделе «Одежда для рыбалки» магазина Ремингтон.</div>
+
+  <div class="footer"><b>РЕМИНГТОН</b><span>Гид по форелевым платникам Подмосковья · 2026</span><span class="pagenum">11</span></div>
+</div>
+
+<!-- ============ PAGE 12 · CTA ============ -->
+<div class="page cta">
+  <div class="cta-top">
+    <div class="brandline" style="margin-bottom:16mm;">
+      <div class="brandmark">РЕМИНГТОН</div>
+      <div class="brandsub">Экипировка для рыбалки и активного отдыха</div>
+    </div>
+    <h2>Форель уже запустили.<br><span>Дело за экипировкой.</span></h2>
+    <p class="big">Этот гид собрала команда интернет-магазина «Ремингтон». Мы одеваем рыбаков, которым не страшны ни октябрьская морось, ни январский лёд: термобельё, костюмы, сапоги ЭВА, перчатки и всё, что делает день на пруду комфортным.</p>
+
+    <div class="promo">
+      <div class="code">FOREL-10</div>
+      <p><b>Скидка 10% на первый заказ</b> для читателей гида. Введите промокод в корзине — он действует на всю экипировку для зимней и демисезонной рыбалки. Срок действия промокода уточняйте в рассылке.</p>
+    </div>
+
+    <div class="cta-list">
+      <div class="cta-item"><b>Костюмы −5…−30°</b><p>Демисезонные мембраны и зимние «поплавки» — под любой формат: ходовая ловля или засада у лунки.</p></div>
+      <div class="cta-item"><b>Термобельё и флис</b><p>Правильная база из чек-листа на стр. 11 — чтобы три слоя работали, а не грели по отдельности.</p></div>
+      <div class="cta-item"><b>Обувь и аксессуары</b><p>Сапоги ЭВА до −40°, перчатки, баффы, термосы — мелочи, которые решают на льду.</p></div>
+    </div>
+  </div>
+  <div class="cta-bottom">
+    <b>Ни хвоста, ни чешуи!</b>
+    <span>Гид обновляется каждый сезон — следите за рассылкой</span>
+  </div>
+</div>
+
+</body>
+</html>
