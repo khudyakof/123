@@ -1,0 +1,35 @@
+/* Ремингтон · Гид рыбака — дизайн-токены */
+@font-face{font-family:'Bebas Neue';src:url('fonts/BebasNeue-Bold.otf');font-weight:700;}
+@font-face{font-family:'Bebas Neue';src:url('fonts/BebasNeue-Regular.otf');font-weight:400;}
+@font-face{font-family:'Open Sans';src:url('fonts/OpenSans-Regular.ttf');font-weight:400;}
+@font-face{font-family:'Open Sans';src:url('fonts/OpenSans-SemiBold.ttf');font-weight:600;}
+@font-face{font-family:'Open Sans';src:url('fonts/OpenSans-Bold.ttf');font-weight:700;}
+
+:root{
+  --orange:#FF5E00;   /* основной акцент */
+  --black:#141412;    /* чёрный бренда */
+  --paper:#f4f2ee;    /* фон страниц */
+  --lgray:#e5e1d8;    /* плашки */
+  --gray:#6e6a64;     /* вторичный текст */
+  --ink:#22211e;      /* основной текст */
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Open Sans',Arial,sans-serif;color:var(--ink);background:var(--paper);padding:24px;}
+.bebas{font-family:'Bebas Neue';}
+
+/* Кнопки */
+a.btn{display:inline-flex;align-items:center;font-family:'Bebas Neue';font-weight:400;font-size:14px;letter-spacing:1.6px;color:#fff;background:var(--black);padding:6px 12px 4px;text-decoration:none;text-transform:uppercase;}
+a.btn.map{background:var(--orange);}
+
+/* Плашки и теги */
+.dist{font-family:'Bebas Neue';font-size:12px;letter-spacing:1px;color:#fff;background:var(--black);padding:4px 9px 2px;white-space:nowrap;}
+.vtag{font-size:10px;font-weight:600;border:1px solid #b9b4aa;padding:3px 8px;color:#5a564e;text-transform:uppercase;letter-spacing:.4px;display:inline-block;}
+.tag{font-family:'Bebas Neue';font-size:15px;color:#fff;background:var(--black);padding:6px 13px 4px;letter-spacing:1.4px;white-space:nowrap;}
+
+/* Ценовая плашка */
+.vprice{font-size:12px;font-weight:700;color:var(--black);line-height:1.4;background:var(--lgray);padding:6px 10px;}
+
+/* Карточка-рамка */
+.frame{background:#fff;border:1.5px solid var(--black);}
+.spine{position:relative;}
+.spine::before{content:'';position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:6px;background:var(--orange);}

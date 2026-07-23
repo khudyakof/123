@@ -1,0 +1,225 @@
+<!-- @dsCard group="Страницы" -->
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Обложка</title><style>
+  @font-face{font-family:'Bebas Neue';src:url('../fonts/BebasNeue-Bold.otf');font-weight:700;}
+  @font-face{font-family:'Bebas Neue';src:url('../fonts/BebasNeue-Regular.otf');font-weight:400;}
+  @font-face{font-family:'Bebas Neue';src:url('../fonts/BebasNeue-Book.otf');font-weight:300;}
+  @font-face{font-family:'Open Sans';src:url('../fonts/OpenSans-Regular.ttf');font-weight:400;}
+  @font-face{font-family:'Open Sans';src:url('../fonts/OpenSans-Italic.ttf');font-weight:400;font-style:italic;}
+  @font-face{font-family:'Open Sans';src:url('../fonts/OpenSans-SemiBold.ttf');font-weight:600;}
+  @font-face{font-family:'Open Sans';src:url('../fonts/OpenSans-Bold.ttf');font-weight:700;}
+
+  :root{
+    --orange:#FF5E00;
+    --black:#141412;
+    --dark:#1e1d1a;
+    --paper:#f4f2ee;
+    --line:#141412;
+    --gray:#6e6a64;
+    --lgray:#e5e1d8;
+    --ink:#22211e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{font-family:'Open Sans',Arial,sans-serif;color:var(--ink);}
+  .bb{font-family:'Bebas Neue';font-weight:700;}
+  @page{size:A4;margin:0;}
+  .page{
+    width:210mm;height:296mm;
+    padding:14mm 14mm 13mm;
+    page-break-after:always;
+    position:relative;
+    background:var(--paper);
+    overflow:hidden;
+  }
+  .page:last-child{page-break-after:auto;}
+
+  /* ---------- magazine header ---------- */
+  .mhead{display:flex;align-items:flex-end;gap:4mm;border-bottom:1mm solid var(--black);padding-bottom:2.5mm;margin-bottom:4mm;}
+  .mhead .secnum{font-family:'Bebas Neue';font-weight:700;font-size:34pt;line-height:.8;color:var(--orange);}
+  .mhead .st{flex:1;}
+  .mhead .kick{font-family:'Open Sans';font-weight:700;font-size:7pt;letter-spacing:2.5pt;text-transform:uppercase;color:var(--gray);margin-bottom:1mm;}
+  .mhead h2{font-family:'Bebas Neue';font-weight:700;font-size:27pt;line-height:.92;color:var(--black);text-transform:uppercase;letter-spacing:.5pt;}
+  .mhead .tag{font-family:'Bebas Neue';font-weight:400;font-size:11pt;color:#fff;background:var(--black);padding:1.5mm 3.5mm 1mm;letter-spacing:1pt;white-space:nowrap;}
+  p.lead{font-size:9.5pt;line-height:1.55;color:#3d3b36;margin-bottom:3.5mm;}
+  .footer{
+    position:absolute;bottom:7mm;left:14mm;right:14mm;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:7pt;color:var(--gray);
+    border-top:.35mm solid var(--black);padding-top:2.2mm;
+    font-weight:600;letter-spacing:.8pt;text-transform:uppercase;
+  }
+  .footer b{font-family:'Bebas Neue';font-weight:700;color:var(--black);letter-spacing:1.5pt;font-size:9pt;}
+  .pagenum{font-family:'Bebas Neue';font-weight:700;background:var(--orange);color:#fff;
+    width:7mm;height:7mm;display:flex;align-items:center;justify-content:center;font-size:10pt;}
+
+  /* ---------- cover ---------- */
+  .cover{background:var(--black);color:#fff;display:flex;flex-direction:column;padding:0;}
+  .cover-in{padding:12mm 14mm 0;flex:1;display:flex;flex-direction:column;}
+  .logobar{display:flex;align-items:stretch;justify-content:space-between;margin-bottom:11mm;}
+  .logobox{display:flex;align-items:center;gap:0;border:.7mm solid #fff;}
+  .logobox .lb-o{background:var(--orange);width:6mm;align-self:stretch;}
+  .logobox .lb-t{padding:2mm 5mm 1.2mm;font-family:'Bebas Neue';font-weight:700;font-size:21pt;letter-spacing:2pt;line-height:1;}
+  .logobox .lb-t sup{font-size:7pt;letter-spacing:0;}
+  .logosub{display:flex;flex-direction:column;justify-content:center;text-align:right;font-size:6.5pt;
+    letter-spacing:2.2pt;color:#b7b3ab;text-transform:uppercase;line-height:1.7;font-weight:600;}
+  .cv-title{font-family:'Bebas Neue';font-weight:700;text-transform:uppercase;line-height:.88;margin-bottom:6mm;}
+  .cv-title .t1{font-size:66pt;color:var(--orange);display:block;letter-spacing:1pt;}
+  .cv-title .t2{font-size:37pt;color:#fff;display:block;letter-spacing:1.5pt;}
+  .cv-strip{display:flex;align-items:center;gap:4mm;margin-bottom:6mm;}
+  .cv-strip .bar{height:.8mm;background:var(--orange);flex:1;}
+  .cv-strip .lbl{font-family:'Bebas Neue';font-weight:400;font-size:15pt;letter-spacing:3pt;color:#fff;text-transform:uppercase;}
+  .cv-photo{position:relative;border:.7mm solid #fff;}
+  .cv-photo img{display:block;width:100%;height:88mm;object-fit:cover;filter:saturate(.9) contrast(1.05);}
+  .cv-photo .cap{position:absolute;left:0;bottom:0;background:var(--orange);color:#fff;
+    font-family:'Bebas Neue';font-weight:400;font-size:10.5pt;letter-spacing:1.5pt;padding:1.8mm 4mm 1.2mm;text-transform:uppercase;}
+  .cv-stats{display:flex;margin-top:6mm;border:.7mm solid #fff;}
+  .cv-stat{flex:1;padding:3.5mm 4mm;border-right:.35mm solid rgba(255,255,255,.4);}
+  .cv-stat:last-child{border-right:none;}
+  .cv-stat b{display:block;font-family:'Bebas Neue';font-weight:700;font-size:23pt;line-height:.9;color:var(--orange);margin-bottom:1mm;}
+  .cv-stat span{font-size:7pt;line-height:1.4;color:#cfccc5;display:block;}
+  .cover-bottom{background:var(--orange);padding:5.5mm 14mm;display:flex;justify-content:space-between;align-items:center;
+    font-family:'Bebas Neue';font-weight:400;font-size:12pt;letter-spacing:2pt;text-transform:uppercase;}
+
+  /* ---------- intro ---------- */
+  .twocol{display:flex;gap:7mm;}
+  .col{flex:1;}
+  .infocard{background:#fff;border:.4mm solid var(--black);padding:4.5mm;margin-bottom:3.5mm;}
+  .infocard h4{font-family:'Bebas Neue';font-weight:700;font-size:14pt;letter-spacing:.8pt;color:var(--black);margin-bottom:1.5mm;text-transform:uppercase;display:flex;align-items:baseline;gap:2.5mm;}
+  .infocard h4 .n{color:var(--orange);font-size:16pt;}
+  .infocard p{font-size:8.6pt;line-height:1.5;color:#3d3b36;}
+  .payrow{display:flex;gap:3.5mm;margin-top:3.5mm;}
+  .paycard{flex:1;background:var(--black);color:#fff;padding:4mm;border-top:1.5mm solid var(--orange);}
+  .paycard h5{font-family:'Bebas Neue';font-weight:700;font-size:13pt;letter-spacing:1pt;color:var(--orange);margin-bottom:1.5mm;text-transform:uppercase;}
+  .paycard p{font-size:8pt;line-height:1.45;color:#d6d3cc;}
+
+  /* ---------- map ---------- */
+  .maplegend{display:flex;flex-wrap:wrap;gap:1.5mm 5mm;margin-top:3mm;font-size:7.8pt;font-weight:600;}
+  .maplegend span{display:flex;align-items:center;gap:1.5mm;}
+  .dN{width:3mm;height:3mm;background:var(--black);display:inline-block;flex-shrink:0;}
+  .dW{width:3mm;height:3mm;background:var(--orange);display:inline-block;flex-shrink:0;}
+  .dS{width:3mm;height:3mm;background:#6e6a64;display:inline-block;flex-shrink:0;}
+  .dE{width:3mm;height:3mm;background:#fff;border:.5mm solid var(--black);display:inline-block;flex-shrink:0;}
+
+  /* ---------- venue cards ---------- */
+  .venue{
+    background:#fff;border:.4mm solid var(--black);
+    padding:3.4mm 4mm;margin-bottom:3mm;
+    display:flex;gap:4mm;position:relative;
+  }
+  .venue::before{content:'';position:absolute;left:-.4mm;top:-.4mm;bottom:-.4mm;width:1.6mm;background:var(--orange);}
+  .vbody{flex:1;min-width:0;padding-left:2mm;}
+  .vphoto{width:37mm;height:26mm;object-fit:cover;flex-shrink:0;margin-top:.6mm;border:.4mm solid var(--black);}
+  .venue .vtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1mm;gap:2mm;}
+  .venue h4{font-family:'Bebas Neue';font-weight:700;font-size:15pt;letter-spacing:.6pt;color:var(--black);text-transform:uppercase;}
+  .venue h4 .vn{color:var(--orange);margin-right:1.2mm;}
+  .venue .dist{font-family:'Bebas Neue';font-weight:400;font-size:9pt;letter-spacing:.8pt;color:#fff;background:var(--black);padding:1mm 2.4mm .6mm;white-space:nowrap;}
+  .venue .road{font-size:7.4pt;font-weight:700;letter-spacing:.6pt;text-transform:uppercase;color:var(--orange);margin-bottom:1.2mm;}
+  .venue p{font-size:8.4pt;line-height:1.42;color:#3d3b36;}
+  .vprice{margin-top:1.6mm;font-size:8.4pt;font-weight:700;color:var(--black);line-height:1.4;background:var(--lgray);padding:1.5mm 2.5mm;}
+  .vfoot{margin-top:1.8mm;display:flex;flex-wrap:wrap;gap:1.5mm;align-items:center;}
+  .vtag{font-size:7pt;font-weight:600;border:.3mm solid #b9b4aa;padding:.7mm 2mm;color:#5a564e;text-transform:uppercase;letter-spacing:.3pt;}
+  a.btn{display:inline-flex;align-items:center;font-family:'Bebas Neue';font-weight:400;font-size:9.5pt;letter-spacing:1.2pt;color:#fff;
+    background:var(--black);padding:1.2mm 3mm .8mm;text-decoration:none;text-transform:uppercase;}
+  a.btn.map{background:var(--orange);}
+
+  /* ---------- table ---------- */
+  table.cmp{width:100%;border-collapse:collapse;font-size:7.9pt;background:#fff;border:.4mm solid var(--black);}
+  table.cmp th{background:var(--black);color:#fff;padding:2mm;text-align:left;font-size:7.6pt;text-transform:uppercase;letter-spacing:.5pt;}
+  table.cmp td{padding:1.7mm 2mm;border-bottom:.25mm solid #ddd8cd;line-height:1.3;vertical-align:top;}
+  table.cmp tr:nth-child(even) td{background:#faf8f4;}
+  table.cmp td:first-child{font-family:'Bebas Neue';font-weight:700;color:var(--orange);font-size:10pt;}
+  .note{font-size:7.6pt;color:var(--gray);margin-top:2.5mm;line-height:1.45;}
+
+  /* ---------- rules ---------- */
+  .rule{display:flex;gap:3.5mm;margin-bottom:3.4mm;align-items:flex-start;}
+  .rule .rn{font-family:'Bebas Neue';font-weight:700;font-size:21pt;color:var(--orange);line-height:.85;width:9mm;flex-shrink:0;text-align:right;}
+  .rule h5{font-family:'Bebas Neue';font-weight:700;font-size:13pt;letter-spacing:.6pt;color:var(--black);margin-bottom:.8mm;text-transform:uppercase;}
+  .rule p{font-size:8.6pt;line-height:1.45;color:#3d3b36;}
+  .warn{background:#fff;border:.4mm solid var(--black);border-left:2mm solid var(--orange);
+    padding:3.5mm 4mm;font-size:8.6pt;line-height:1.5;margin-top:3.5mm;color:#3d3b36;}
+  .warn b{color:var(--black);}
+
+  /* ---------- tackle ---------- */
+  .gearbox{background:#fff;border:.4mm solid var(--black);padding:4mm;margin-bottom:3.5mm;}
+  .gearbox h4{font-family:'Bebas Neue';font-weight:700;font-size:14pt;letter-spacing:1pt;color:var(--black);margin-bottom:2mm;padding-bottom:1.5mm;border-bottom:.6mm solid var(--orange);text-transform:uppercase;}
+  .gearrow{display:flex;justify-content:space-between;font-size:8.4pt;padding:1.2mm 0;border-bottom:.2mm dotted #c9c4b8;line-height:1.4;}
+  .gearrow:last-child{border-bottom:none;}
+  .gearrow b{color:var(--black);}
+  .gearrow span{text-align:right;color:#3d3b36;max-width:60%;}
+  .lure{display:flex;gap:2.5mm;align-items:flex-start;margin-bottom:2.8mm;}
+  .lure .ic{font-family:'Bebas Neue';font-weight:700;font-size:14pt;color:var(--orange);flex-shrink:0;width:4.5mm;text-align:center;line-height:1;}
+  .lure p{font-size:8.4pt;line-height:1.45;color:#3d3b36;}
+  .lure b{color:var(--black);}
+
+  /* ---------- season ---------- */
+  .season{display:flex;gap:3mm;margin-top:3mm;}
+  .scard{flex:1;background:#fff;border:.4mm solid var(--black);overflow:hidden;}
+  .scard .sh{padding:2.5mm 2.5mm 1.8mm;color:#fff;font-family:'Bebas Neue';font-weight:700;font-size:12pt;letter-spacing:1pt;text-align:center;text-transform:uppercase;}
+  .scard .sb{padding:3mm;font-size:8pt;line-height:1.45;color:#3d3b36;}
+  .meter{height:2.5mm;background:var(--lgray);margin:2mm 0 1mm;overflow:hidden;}
+  .meter i{display:block;height:100%;background:var(--orange);}
+
+  /* ---------- checklist ---------- */
+  .chk{display:flex;align-items:flex-start;gap:2.5mm;margin-bottom:2.2mm;font-size:8.6pt;line-height:1.4;color:#3d3b36;}
+  .chk .box{width:3.8mm;height:3.8mm;border:.5mm solid var(--black);flex-shrink:0;margin-top:.4mm;}
+  .chk b{color:var(--black);}
+  .cl-kick{font-family:'Bebas Neue';font-weight:700;font-size:13.5pt;letter-spacing:1pt;color:var(--black);text-transform:uppercase;
+    border-bottom:.6mm solid var(--orange);padding-bottom:1mm;margin-bottom:2.5mm;}
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--black);color:#fff;display:flex;flex-direction:column;padding:0;}
+  .cta-top{padding:14mm 14mm 10mm;flex:1;}
+  .cta h2{font-family:'Bebas Neue';font-weight:700;font-size:38pt;line-height:.92;margin:12mm 0 5mm;text-transform:uppercase;letter-spacing:1pt;}
+  .cta h2 span{color:var(--orange);}
+  .cta p.big{font-size:10pt;line-height:1.6;color:#cfccc5;max-width:160mm;margin-bottom:8mm;}
+  .promo{background:#fff;color:var(--ink);padding:6mm;display:flex;align-items:center;gap:7mm;border-left:3mm solid var(--orange);}
+  .promo .code{font-family:'Bebas Neue';font-weight:700;background:var(--orange);color:#fff;font-size:22pt;letter-spacing:2.5pt;
+    padding:3.5mm 7mm 2.5mm;white-space:nowrap;}
+  .promo p{font-size:9pt;line-height:1.5;color:#3d3b36;}
+  .cta-list{display:flex;gap:4.5mm;margin-top:8mm;}
+  .cta-item{flex:1;border:.5mm solid rgba(255,255,255,.5);padding:4.5mm;}
+  .cta-item b{font-family:'Bebas Neue';font-weight:700;color:var(--orange);font-size:14pt;letter-spacing:.8pt;display:block;margin-bottom:1.5mm;text-transform:uppercase;}
+  .cta-item p{font-size:8.4pt;line-height:1.5;color:#cfccc5;}
+  .cta-bottom{background:var(--orange);padding:5.5mm 14mm;display:flex;justify-content:space-between;
+    font-family:'Bebas Neue';font-weight:400;font-size:12pt;letter-spacing:2pt;text-transform:uppercase;}
+</style>
+</head><body style="background:#8a867e;padding:20px;"><div class="page cover">
+  <div class="cover-in">
+    <div class="logobar">
+      <div class="logobox">
+        <div class="lb-o"></div>
+        <div class="lb-t">REMINGTON<sup>®</sup></div>
+      </div>
+      <div class="logosub">Одежда и товары<br>для охоты и рыбалки</div>
+    </div>
+
+    <div class="cv-title">
+      <span class="t1">Форель</span>
+      <span class="t2">рядом с Москвой</span>
+    </div>
+
+    <div class="cv-strip">
+      <span class="lbl">Гид по платникам Подмосковья</span>
+      <div class="bar"></div>
+      <span class="lbl" style="color:var(--orange);">2026/27</span>
+    </div>
+
+    <div class="cv-photo">
+      <img src="../photos/29.jpg" alt="">
+      <div class="cap">20 водоёмов · цены проверены · июль 2026</div>
+    </div>
+
+    <div class="cv-stats">
+      <div class="cv-stat"><b>20</b><span>платников с фото, тарифами и ссылками на сайт и карту</span></div>
+      <div class="cv-stat"><b>4</b><span>формата оплаты — разобраны на пальцах</span></div>
+      <div class="cv-stat"><b>1</b><span>стартовый сетап снастей под ключ</span></div>
+      <div class="cv-stat"><b>12</b><span>месяцев: календарь клёва форели</span></div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <span>Гид рыбака</span>
+    <span>Москва и область</span>
+  </div>
+</div>
+
+</body></html>
